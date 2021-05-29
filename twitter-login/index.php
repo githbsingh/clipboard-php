@@ -122,21 +122,21 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
     echo "Retrive variables from session 3 ";
     // Fresh authentication 
     $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET); 
-   // $request_token = $twClient->getRequestToken(TW_REDIRECT_URL); 
-    $request_token = $twClient->oauth('oauth/request_token', array('oauth_callback' => TW_REDIRECT_URL));
-     
-    // Received token info from twitter 
+    $request_token = $twClient->getRequestToken(TW_REDIRECT_URL); 
+    //$request_token = $twClient->oauth('oauth/request_token', array('oauth_callback' => TW_REDIRECT_URL));
+    echo var_dump($request_token); 
+    echo "Received token info from twitter";
     $_SESSION['token']       = $request_token['oauth_token']; 
     $_SESSION['token_secret']= $request_token['oauth_token_secret']; 
      
     // If authentication returns success 
    // if($twClient->http_code == '200'){ 
         // Get twitter oauth url 
-       // $authUrl = $twClient->getAuthorizeURL($request_token['oauth_token']); 
-          $authUrl = $twClient->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
+        $authUrl = $twClient->getAuthorizeURL($request_token['oauth_token']); 
+         // $authUrl = $twClient->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
          
-        // Display twitter login button 
-        $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="twitter_button.png" /></a>'; 
+         echo "Display twitter login button";
+         echo $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="twitter_button.png" /></a>'; 
     //}else{ 
      //   $output = '<h3 style="color:red">Error connecting to Twitter! Try again later!</h3>'; 
     //} 
