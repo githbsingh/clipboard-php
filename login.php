@@ -213,7 +213,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <p class="text-center">Login with your social media account</p>
         <div class="text-center social-btn">
             <a href="facebook-login" class="btn btn-secondary"><i class="fa fa-facebook"></i>&nbsp; Facebook</a>
-            <a href="apple-login" class="btn btn-info"><i class="fa fa-twitter"></i>&nbsp; Twitter</a>
+            <a href="twitter-login" class="btn btn-info"><i class="fa fa-twitter"></i>&nbsp; Twitter</a>
 			<a href="google-login" class="btn btn-danger"><i class="fa fa-google"></i>&nbsp; Google</a>
         </div>
     </form>
