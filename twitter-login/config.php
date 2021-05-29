@@ -11,8 +11,8 @@ define('DB_NAME', 'clipboard');
 define('DB_USER_TBL', 'users'); 
  
 // Twitter API configuration 
-define('TW_CONSUMER_KEY', 'evmBpUznqpVpZFCathN4yEKyU'); 
-define('TW_CONSUMER_SECRET', 'l4HKsZteIK3humJQxo27xwLUYYx4srwN4WbjZjHLgCYBSimKT8'); 
+define('TW_CONSUMER_KEY', 'qmkVKcZsx64qs2jLocadXa9b4'); 
+define('TW_CONSUMER_SECRET', '3MXlFzsLosOitwUzujupoDyjMEZnRei59n7hJVupqHCB4y6b88'); 
 define('TW_REDIRECT_URL', 'http://frozen-sierra-06530.herokuapp.com//twitter-login/'); 
  
 // Start session 
@@ -23,4 +23,4 @@ if(!session_id()){
 // Include Twitter client library  
 require "vendor/autoload.php";
 
-use TwitterOAuth;
+use Abraham\TwitterOAuth\TwitterOAuth;

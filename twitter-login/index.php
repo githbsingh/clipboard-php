@@ -26,7 +26,7 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
     /* 
      * Prepare output to show to the user 
      */ 
-    $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $oauthToken, $oauthTokenSecret); 
+    $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $oauthToken, $oauthTokenSecret); 
     echo "Retrive variables from session 1 ";
     //If user submits a tweet to post to twitter 
     if(isset($_POST["updateme"])){ 
@@ -64,14 +64,14 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
 }elseif(isset($_REQUEST['oauth_token']) && $_SESSION['token'] == $_REQUEST['oauth_token']){ 
     echo "Retrive variables from session 2 ";
     // Call Twitter API 
-    $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $_SESSION['token'] , $_SESSION['token_secret']); 
+    $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $_SESSION['token'] , $_SESSION['token_secret']); 
      
     // Get OAuth token 
-    $access_token = $twClient->getAccessToken($_REQUEST['oauth_verifier']); 
-    //$access_token = $twClient->oauth('oauth/access_token', array('oauth_verifier' => $_REQUEST['oauth_verifier']));
+    //$access_token = $twClient->getAccessToken($_REQUEST['oauth_verifier']); 
+    $access_token = $twClient->oauth('oauth/access_token', array('oauth_verifier' => $_REQUEST['oauth_verifier']));
      
     // If returns success 
-    if($twClient->http_code == '200'){ 
+   // if($twClient->http_code == '200'){ 
         // Storing access token data into session 
         $_SESSION['status'] = 'verified'; 
         $_SESSION['request_vars'] = $access_token; 
@@ -115,34 +115,31 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
         // Redirect the user back to the same page 
        exit;
         header('Location: ./'); 
-    }else{ 
+    //}else{ 
         $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>'; 
-    } 
+    //} 
 }else{ 
     echo "Retrive variables from session 3 ";
     // Fresh authentication 
-    $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET); 
-    echo "Var Dump 1";
-    echo var_dump($twClient);
-    $request_token = $twClient->getRequestToken(TW_REDIRECT_URL); 
-    //$request_token = $twClient->oauth('oauth/request_token', array('oauth_callback' => TW_REDIRECT_URL));
+    $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET); 
+   // $request_token = $twClient->getRequestToken(TW_REDIRECT_URL); 
+    $request_token = $twClient->oauth('oauth/request_token', array('oauth_callback' => TW_REDIRECT_URL));
      
-    echo " Received token info from twitter"; 
-    echo var_dump($request_tokent);
+    // Received token info from twitter 
     $_SESSION['token']       = $request_token['oauth_token']; 
     $_SESSION['token_secret']= $request_token['oauth_token_secret']; 
      
-    echo " If authentication returns success"; 
-    if($twClient->http_code == '200'){ 
+    // If authentication returns success 
+   // if($twClient->http_code == '200'){ 
         // Get twitter oauth url 
-        $authUrl = $twClient->getAuthorizeURL($request_token['oauth_token']); 
-         // $authUrl = $twClient->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
+       // $authUrl = $twClient->getAuthorizeURL($request_token['oauth_token']); 
+          $authUrl = $twClient->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
          
-        echo" Display twitter login button"; 
-       echo  $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="twitter_button.png" /></a>'; 
-    }else{ 
-       echo  $output = '<h3 style="color:red">Error connecting to Twitter! Try again later!</h3>'; 
-    } exit;
+        // Display twitter login button 
+        $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="twitter_button.png" /></a>'; 
+    //}else{ 
+     //   $output = '<h3 style="color:red">Error connecting to Twitter! Try again later!</h3>'; 
+    //} 
 } 
 ?>
 
