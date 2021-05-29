@@ -13,7 +13,7 @@ define('DB_USER_TBL', 'users');
 // Twitter API configuration 
 define('TW_CONSUMER_KEY', 'evmBpUznqpVpZFCathN4yEKyU'); 
 define('TW_CONSUMER_SECRET', 'l4HKsZteIK3humJQxo27xwLUYYx4srwN4WbjZjHLgCYBSimKT8'); 
-define('TW_REDIRECT_URL', 'http://localhost/clipboard/twitter-login/'); 
+define('TW_REDIRECT_URL', 'http://frozen-sierra-06530.herokuapp.com//twitter-login/'); 
  
 // Start session 
 if(!session_id()){ 
