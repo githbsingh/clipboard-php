@@ -30,7 +30,7 @@ class User {
         if(!empty($data)){  
             // Check whether the user already exists in the database  
             $checkQuery = "SELECT * FROM ".$this->userTbl." WHERE oauth_provider = '".$data['oauth_provider']."' AND oauth_uid = '".$data['oauth_uid']."'";  
-            $_SESSION["twitter"]=$data;
+           // $_SESSION["twitter"]=$data;
             $checkResult = $this->db->query($checkQuery);  
               
             // Add modified time to the data array  
@@ -53,6 +53,12 @@ class User {
                 // Update user data in the database  
                 $query = "UPDATE ".$this->userTbl." SET ".$colvalSet.$whereSql;  
                 $update = $this->db->query($query);  
+                if ($update === TRUE) {
+                    echo "New record created successfully";
+                } else {
+                    echo "Error: " . $query . "<br>" . $this->db->error;
+                }  
+                
             }else{  
                 // Add created time to the data array  
                 if(!array_key_exists('created',$data)){  
@@ -71,15 +77,28 @@ class User {
                   
                 // Insert user data in the database  
                 $query = "INSERT INTO ".$this->userTbl." (".$columns.") VALUES (".$values.")";  
+               
                 $insert = $this->db->query($query);  
+                if ($insert === TRUE) {
+                    echo "New record created successfully";
+                } else {
+                    echo "Error: " . $query . "<br>" . $this->db->error;
+                }  
             }  
               
             // Get user data from the database  
-            $result = $this->db->query($checkQuery);  
+            $result = $this->db->query($checkQuery); 
+            if ($result === TRUE) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $checkQuery . "<br>" . $this->db->error;
+            }              
+              
             $userData = $result->fetch_assoc();  
         }  
           
         // Return user data  
-        return !empty($userData)?$userData:false;  
+        return !empty($userData)?$userData:false; 
+        
     } 
 }

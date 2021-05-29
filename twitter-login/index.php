@@ -26,8 +26,8 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
     /* 
      * Prepare output to show to the user 
      */ 
-    $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $oauthToken, $oauthTokenSecret); 
-    echo "Retrive variables from session 1 ";
+    $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $oauthToken, $oauthTokenSecret); 
+
     //If user submits a tweet to post to twitter 
     if(isset($_POST["updateme"])){ 
         $my_update = $twClient->post('statuses/update', array('status' => $_POST["updateme"])); 
@@ -62,16 +62,16 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
     } 
     $output .= '</ul></div>'; 
 }elseif(isset($_REQUEST['oauth_token']) && $_SESSION['token'] == $_REQUEST['oauth_token']){ 
-    echo "Retrive variables from session 2 ";
+    
     // Call Twitter API 
-    $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $_SESSION['token'] , $_SESSION['token_secret']); 
+    $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $_SESSION['token'] , $_SESSION['token_secret']); 
      
     // Get OAuth token 
-    //$access_token = $twClient->getAccessToken($_REQUEST['oauth_verifier']); 
-    $access_token = $twClient->oauth('oauth/access_token', array('oauth_verifier' => $_REQUEST['oauth_verifier']));
+    $access_token = $twClient->getAccessToken($_REQUEST['oauth_verifier']); 
+    //$access_token = $twClient->oauth('oauth/access_token', array('oauth_verifier' => $_REQUEST['oauth_verifier']));
      
     // If returns success 
-   // if($twClient->http_code == '200'){ 
+    if($twClient->http_code == '200'){ 
         // Storing access token data into session 
         $_SESSION['status'] = 'verified'; 
         $_SESSION['request_vars'] = $access_token; 
@@ -89,57 +89,58 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
         $lname = isset($name[1])?$name[1]:''; 
         $profileLink = 'https://twitter.com/'.$userInfo->screen_name; 
         $twUserData = array( 
-            'oauth_uid'     => $_SESSION['request_vars']['user_id'], 
+            'oauth_uid'     => $userInfo->id, 
             'first_name'    => $fname, 
             'last_name'     => $lname, 
             'locale'        => $userInfo->lang, 
             'picture'       => $userInfo->profile_image_url, 
             'link'          => $profileLink, 
-            'username'      => $userInfo->screen_name,
+            //'username'      => $userInfo->screen_name,
             'email'         => $userInfo->email 
         );
-        echo "Error!!".$_REQUEST['oauth_verifier'];
-        echo json_encode($userInfo);
-        echo var_dump($access_token);
+        //echo "Error!!".$_REQUEST['oauth_verifier'];
+        //echo json_encode($userInfo);
+        //echo var_dump($access_token);
         // Insert or update user data to the database 
         $twUserData['oauth_provider'] = 'twitter'; 
         $userData = $user->checkUser($twUserData); 
          
         // Storing user data into session 
-        $_SESSION['userData'] = $userData; 
+        $_SESSION['userData'] = $userData;
+        echo var_dump($twUserData);
          
         // Remove oauth token and secret from session 
         unset($_SESSION['token']); 
         unset($_SESSION['token_secret']); 
          
         // Redirect the user back to the same page 
-       exit;
+      
         header('Location: ./'); 
-    //}else{ 
+    }else{ 
         $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>'; 
-    //} 
+    } 
 }else{ 
-    //echo "Retrive variables from session 3 ";
+   
     // Fresh authentication 
-    $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET); 
-    //$request_token = $twClient->getRequestToken(TW_REDIRECT_URL); 
-    $request_token = $twClient->oauth('oauth/request_token', array('oauth_callback' => TW_REDIRECT_URL));
-    //echo var_dump($request_token); 
-    //echo "Received token info from twitter";
+    $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET); 
+    $request_token = $twClient->getRequestToken(TW_REDIRECT_URL); 
+    //$request_token = $twClient->oauth('oauth/request_token', array('oauth_callback' => TW_REDIRECT_URL));
+     
+    // Received token info from twitter 
     $_SESSION['token']       = $request_token['oauth_token']; 
     $_SESSION['token_secret']= $request_token['oauth_token_secret']; 
      
     // If authentication returns success 
-   // if($twClient->http_code == '200'){ 
+    if($twClient->http_code == '200'){ 
         // Get twitter oauth url 
-        //$authUrl = $twClient->getAuthorizeURL($request_token['oauth_token']); 
-          $authUrl = $twClient->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
+        $authUrl = $twClient->getAuthorizeURL($request_token['oauth_token']); 
+        //  $authUrl = $twClient->url('oauth/authorize', array('oauth_token' => $request_token['oauth_token']));
          
-        // echo "Display twitter login button";
-          $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="twitter_button.png" /></a>'; 
-    //}else{ 
-     //   $output = '<h3 style="color:red">Error connecting to Twitter! Try again later!</h3>'; 
-    //} 
+        // Display twitter login button 
+        $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="twitter_button.png" /></a>'; 
+    }else{ 
+        $output = '<h3 style="color:red">Error connecting to Twitter! Try again later!</h3>'; 
+    } 
 } 
 ?>
 
@@ -151,8 +152,8 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
 </head>
 <body>
 <div class="container">
-    <!-- Display login button / Twitter profile information -->
-    <?php if(isset($_SESSION["twitter"])){echo var_dump($_SESSION["twitter"]);}?>
+    <!-- Display login button / Twitter profile information 
+    <?php if(isset($_SESSION["twitter"])){echo var_dump($_SESSION["twitter"]);}?>-->
     <?php echo $output; ?>
 </div>
 </body>
