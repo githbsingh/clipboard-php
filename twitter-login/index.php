@@ -122,6 +122,7 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
     echo "Retrive variables from session 3 ";
     // Fresh authentication 
     $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET); 
+    echo "Var Dump 1";
     echo var_dump($twClient);
     $request_token = $twClient->getRequestToken(TW_REDIRECT_URL); 
     //$request_token = $twClient->oauth('oauth/request_token', array('oauth_callback' => TW_REDIRECT_URL));
