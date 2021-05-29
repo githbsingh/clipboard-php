@@ -139,7 +139,7 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
         // Display twitter login button 
         $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="twitter_button.png" /></a>'; 
     }else{ 
-        $output = '<h3 style="color:red">Error connecting to Twitter! Try again later!</h3>'; 
+        $output = '<h3 style="color:red">Error Code-'.$twClient->http_code.'! Error connecting to Twitter! Try again later!</h3>'; 
     } 
 } 
 ?>
