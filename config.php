@@ -10,7 +10,7 @@ define('DB_USER_TBL', 'users');
 // Google API configuration
 define('GOOGLE_CLIENT_ID', '675155176476-0fjf5lrv7eb7vfccdiif8ae5tg8uef26.apps.googleusercontent.com');
 define('GOOGLE_CLIENT_SECRET', '9rosAU-vXt4YsXRokyPR7hAV');
-define('GOOGLE_REDIRECT_URL', 'https://cloudupp.herokuapp.com/google-login/');
+define('GOOGLE_REDIRECT_URL', 'https://frozen-sierra-06530.herokuapp.com/google-login/');
 
 
 // Facebook API configuration
@@ -18,7 +18,7 @@ define('GOOGLE_REDIRECT_URL', 'https://cloudupp.herokuapp.com/google-login/');
 define('FB_APP_ID', '1884183495069774');
 define('FB_APP_SECRET', 'e16cf3acd3e01e274d860b24dccab8e8');
 
-define('FB_REDIRECT_URL', 'https://cloudupp.herokuapp.com/facebook-login/');
+define('FB_REDIRECT_URL', 'https://frozen-sierra-06530.herokuapp.com/facebook-login/');
 
 
 
