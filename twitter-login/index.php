@@ -26,7 +26,7 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
     /* 
      * Prepare output to show to the user 
      */ 
-    $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $oauthToken, $oauthTokenSecret); 
+    $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $oauthToken, $oauthTokenSecret); 
     echo "Retrive variables from session 1 ";
     //If user submits a tweet to post to twitter 
     if(isset($_POST["updateme"])){ 
@@ -64,7 +64,7 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
 }elseif(isset($_REQUEST['oauth_token']) && $_SESSION['token'] == $_REQUEST['oauth_token']){ 
     echo "Retrive variables from session 2 ";
     // Call Twitter API 
-    $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $_SESSION['token'] , $_SESSION['token_secret']); 
+    $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET, $_SESSION['token'] , $_SESSION['token_secret']); 
      
     // Get OAuth token 
     $access_token = $twClient->getAccessToken($_REQUEST['oauth_verifier']); 
@@ -121,7 +121,7 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
 }else{ 
     echo "Retrive variables from session 3 ";
     // Fresh authentication 
-    $twClient = new Abraham\TwitterOAuth\TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET); 
+    $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET); 
     $request_token = $twClient->getRequestToken(TW_REDIRECT_URL); 
     //$request_token = $twClient->oauth('oauth/request_token', array('oauth_callback' => TW_REDIRECT_URL));
      

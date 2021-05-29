@@ -23,4 +23,4 @@ if(!session_id()){
 // Include Twitter client library  
 require "vendor/autoload.php";
 
-use Abraham\TwitterOAuth\TwitterOAuth;
+use TwitterOAuth;
