@@ -122,10 +122,12 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
     echo "Retrive variables from session 3 ";
     // Fresh authentication 
     $twClient = new TwitterOAuth(TW_CONSUMER_KEY, TW_CONSUMER_SECRET); 
+    echo var_dump($twClient);
     $request_token = $twClient->getRequestToken(TW_REDIRECT_URL); 
     //$request_token = $twClient->oauth('oauth/request_token', array('oauth_callback' => TW_REDIRECT_URL));
      
     echo " Received token info from twitter"; 
+    echo var_dump($request_tokent);
     $_SESSION['token']       = $request_token['oauth_token']; 
     $_SESSION['token_secret']= $request_token['oauth_token_secret']; 
      
@@ -139,7 +141,7 @@ if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_S
        echo  $output = '<a href="'.filter_var($authUrl, FILTER_SANITIZE_URL).'"><img src="twitter_button.png" /></a>'; 
     }else{ 
        echo  $output = '<h3 style="color:red">Error connecting to Twitter! Try again later!</h3>'; 
-    } 
+    } exit;
 } 
 ?>
 
