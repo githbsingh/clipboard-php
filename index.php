@@ -11,6 +11,8 @@ header("location: login.php");
 <html>
 <head>
 <title>Clipboard</title>
+<!-- add icon link -->
+<link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -34,6 +36,9 @@ body {
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover;
     background-color:  #f8f9fa;
+}
+.row-margin{
+  margin:10px 0px 0px 0px;
 }
 </style>
 
@@ -102,7 +107,7 @@ body {
       }, 
       success: function(res) {
         //console.log("ok");
-        html = '<h3 style="color:green">File successfully uploaded.</3>';    
+        html = '<h4 style="color:green">File successfully uploaded.</h4>';    
         $("#notificaton").html(html);
         $("#notificaton").show();
       
@@ -116,19 +121,50 @@ body {
 </head>
 <body>
 <div class="container" >
-  <h1>Clipboard</h1>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="index.php"><img src="img/clipboard-flat.png" width="30" height="30" class="d-inline-block align-top" alt=""> Clipboard</a>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php" >Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="gallery.php">Gallery</a>
+      </li>
+   
+   
+      
+    </ul>
+    <ul class="navbar-nav" style="margin-left: auto;">
+    <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user fa-fw"></i>User
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="logout.php">Logout</a>
+          
+        </div>
+      </li>
+    </ul>
+
+  </nav>
+
+  
   <!--<p> Click and paste here.</p>-->
  
-  <div class="row">
-    <a class="btn btn-large btn-default" href="gallery.php"><i class="fa fa-file-image-o fa-fw"></i>View files</a> 
+  <div class="row row-margin">
+    <!--<a class="btn btn-large btn-default" href="gallery.php"><i class="fa fa-file-image-o fa-fw"></i>View files</a> 
     <a class="btn btn-large btn-default" id="clear" onclick="clearImage()"><i class="fa fa-undo fa-fw"></i>Remove preview</a>   
     <a class="btn btn-large btn-default" href="logout.php"><i class="fa fa-sign-out fa-fw"></i>Logout</a>  
-    <p> </p>    
-    
+    <p> </p>-->
+    <button type="button" class="btn btn-sm btn-outline-dark" id="clear" onclick="clearImage()"><i class="fa fa-clipboard fa-fw"></i>Remove preview</button>
+    <div style="margin-left:auto;" id="notificaton"></div>
+    <br>
   </div>
   
-  <div class="row" id="notificaton"></div>
-  <div class="row" style="width: 100%; height: 600px; background: grey; " id="pasteTarget">
+  
+  <div class="row" style="margin: 10px 0px 0px 0px;width: 100%; height: 600px; background: grey; " id="pasteTarget">
   <!--<div class="row" style="width: 100%; height: 600px; background: grey; display: flex; align-items: center; justify-content: center" id="pasteTarget">-->
     <h2 id="instruction" style="margin:auto;">Click and Paste image here</h2>
     <!--<img id="previewImg"  style="width: 100%;max-height: 600px;object-fit: cover;" >-->

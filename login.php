@@ -94,6 +94,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Clipboard</title>
+<!-- add icon link -->
+<link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -167,6 +169,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </style>
 </head>
 <body>
+<div class="row" style="margin-top:40px;">
+   
+    <!--<img src="img/clipboard-flat.png" style="margin-left:50px;width:70px"/>
+    <h1 style="margin-top:14px;">Clipboard</h1>-->
+    <div style="margin:auto;"><img src="img/clipboard-flat.png" style="margin-left:18px;" width="100" height="100" class="d-inline-block align-top" alt=""> 
+    <h2 style="color:white;">Clipboard</h2>
+    </div>
+    
+</div>
 <!--<div class="row" ><p style="margin:auto;color:white;font-size: 71px;text-shadow: 4px 3px 0 #5f6163, 9px 8px 0 rgb(0 0 0 / 15%);">ClipBoard</p> </div>-->
 <div class="login-form">
     <form action="login.php" method="post">
@@ -202,7 +213,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <p class="text-center">Login with your social media account</p>
         <div class="text-center social-btn">
             <a href="facebook-login" class="btn btn-secondary"><i class="fa fa-facebook"></i>&nbsp; Facebook</a>
-            <a href="#" class="btn btn-info"><i class="fa fa-twitter"></i>&nbsp; Twitter</a>
+            <a href="apple-login" class="btn btn-dark"><i class="fa fa-apple"></i>&nbsp; Apple</a>
 			<a href="google-login" class="btn btn-danger"><i class="fa fa-google"></i>&nbsp; Google</a>
         </div>
     </form>

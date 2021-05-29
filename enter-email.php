@@ -4,6 +4,8 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Clipboard</title>
+    <!-- add icon link -->
+    <link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
 	<link rel="stylesheet" href="css/main.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,7 +18,17 @@
 
 </head>
 <body>
-	<form class="login-form" action="enter-email.php" method="post">
+    <div class="row" style="margin-top:40px;">
+    
+        <!--<img src="img/clipboard-flat.png" style="margin-left:50px;width:70px"/>
+        <h1 style="margin-top:14px;">Clipboard</h1>-->
+        <div style="margin:auto;"><img src="img/clipboard-flat.png" style="margin-left:18px;" width="100" height="100" class="d-inline-block align-top" alt=""> 
+        <h2 style="color:white;">Clipboard</h2>
+        </div>
+        
+    </div>
+
+	<form action="enter-email.php" method="post">
 		<h2 class="form-title">Reset password</h2>
 		<!-- form validation messages
 		<?php include('messages.php'); ?> 
@@ -38,7 +50,7 @@
 			<button type="submit" name="reset-password" class="btn btn-primary">Submit</button>
 		</div>
         
-        <p class="text-center text-muted small"><a href="login.php">Cancel</a></p>
+        <p class="text-center text-muted "><a href="login.php">Back to Login</a></p>
 	</form>
     
 </body>

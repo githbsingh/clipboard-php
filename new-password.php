@@ -15,7 +15,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<form class="login-form" action="new-password.php" method="post">
+    <div class="row" style="margin-top:40px;">
+    
+        <!--<img src="img/clipboard-flat.png" style="margin-left:50px;width:70px"/>
+        <h1 style="margin-top:14px;">Clipboard</h1>-->
+        <div style="margin:auto;"><img src="img/clipboard-flat.png" style="margin-left:18px;" width="100" height="100" class="d-inline-block align-top" alt=""> 
+        <h2 style="color:white;">Clipboard</h2>
+        </div>
+        
+    </div>
+	<form action="new-password.php" method="post">
 		<h2 class="form-title">New password</h2>
 		<!-- form validation messages
 		<?php include('messages.php'); ?> 
@@ -50,6 +59,7 @@
 		<div class="form-group">
 			<button type="submit" name="new_password" class="btn btn-primary">Submit</button>
 		</div>
+        <p class="text-center text-muted "><a href="login.php">Back to Login</a></p>
 	</form>
 </body>
 </html>

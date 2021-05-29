@@ -114,6 +114,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Clipboard</title>
+<!-- add icon link -->
+<link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -161,7 +163,15 @@ body {
 </style>
 </head>
 <body>
-
+<div class="row" style="margin-top:40px;">
+   
+    <!--<img src="img/clipboard-flat.png" style="margin-left:50px;width:70px"/>
+    <h1 style="margin-top:14px;">Clipboard</h1>-->
+    <div style="margin:auto;"><img src="img/clipboard-flat.png" style="margin-left:18px;" width="100" height="100" class="d-inline-block align-top" alt=""> 
+    <h2 style="color:white;">Clipboard</h2>
+    </div>
+    
+</div>
 <div class="reg-form">
     <form action="registration.php" method="post">
         <h2 class="text-center">Register</h2>  

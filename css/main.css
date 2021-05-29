@@ -19,7 +19,7 @@ a {
 form {
 /*	width: 25%;*/
     width: 310px;	
-	margin: 70px auto;
+	margin: 40px auto;
 	background: white;
 	padding: 10px;
 	border-radius: 3px;
@@ -35,7 +35,7 @@ input {
 	padding: 8px;
 }
 form .form-group {
-	margin: 10px auto;
+	margin: 25px auto;
 }
 form button {
 	width: 100%;

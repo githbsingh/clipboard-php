@@ -11,7 +11,9 @@ header("location: login.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Gallery</title>
+  <title>Clipboard</title>
+  <!-- add icon link -->
+ <link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -43,29 +45,67 @@ header("location: login.php");
     input {
         width: 100px;
     }
+    .row-margin{
+      margin:10px 0px 0px 0px;
+    }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>Uploaded files</h2>  
-  <div class="row">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand -->
+  <a class="navbar-brand" href="index.php"><img src="img/clipboard-flat.png" width="30" height="30" class="d-inline-block align-top" alt=""> Clipboard</a>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php" >Home</a>
+      </li>
+      <li class="nav-item  active">
+        <a class="nav-link" href="gallery.php">Gallery</a>
+      </li> 
    
+      
+    </ul>
+    <ul class="navbar-nav" style="margin-left: auto;">
+    <li class="nav-item dropdown" >
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user fa-fw"></i>User
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="logout.php">Logout</a>
+          
+        </div>
+      </li>
+    </ul>
+
+  </nav>
+
+  <!--<h2>Uploaded files</h2>  -->
+  <div class="row row-margin"  >  
     
     
-    <a class="btn btn-large btn-default" href="index.php"><i class="fa fa-arrow-left fa-fw"></i>Back to Clipboard</a>       
+    <!--<a class="btn btn-large btn-default" href="index.php"><i class="fa fa-arrow-left fa-fw"></i>Back to Clipboard</a>       
     <a class="btn btn-large btn-default " href="logout.php"><i class="fa fa-sign-out fa-fw"></i>Logout</a>  
-    <!--<p class="text-right" style="margin:auto;"><i class="fa fa-user fa-fw"></i> User</p> -->
+    <p class="text-right" style="margin:auto;"><i class="fa fa-user fa-fw"></i> User</p> 
     <form action="flexgallery.php"  method="post">
       <input type="text" name="search" />
       <input type="submit" value="Search" />
     </form>
     
     
-  </div>
+  -->
   
-  <p>Click on the images to enlarge them.</p>
-  <div class="row" >
+    <p >Click on the images to enlarge them.</p> 
+   
+    <form class="form-inline" action="gallery.php"  method="post">
+    <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" value="search">Search</button>
+  </form>
+
+  </div>
+
+  <div class="row row-margin" style="background:white" >
   <?php
     $user_id = $_SESSION["id"];
     $dir_name = "uploads/";
