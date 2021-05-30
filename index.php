@@ -107,8 +107,8 @@ body {
         $("#notificaton").show();
       }, 
       success: function(res) {
-        console.log("Successfully posted the file.");
-        html = '<h4 style="color:green"></h4>';    
+        console.log(JSON.stringify(res));
+        html = '<h4 style="color:green">The file has been uploaded successfully.</h4>';    
         $("#notificaton").html(html);
         $("#notificaton").show();
       

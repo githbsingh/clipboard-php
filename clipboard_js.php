@@ -26,7 +26,7 @@
             $query = "INSERT into images (user_id,file_name, uploaded_on) VALUES ( $user_id,'".$file_fullname."', NOW())";
             $insert = $link->query($query);
             if($insert){
-                echo $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+                echo $statusMsg = "The file ".$filename. " has been uploaded successfully.";
             }else{
                 echo $statusMsg = "File upload entry failed in your user account, please try again.";
             } 
@@ -36,7 +36,7 @@
         
 
     }
-
+    return json_encode($statusMsg);
 
 
 ?>
