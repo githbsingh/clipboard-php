@@ -59,7 +59,7 @@
 		<div class="form-group">
 			<button type="submit" name="new_password" class="btn btn-primary">Submit</button>
 		</div>
-        <p class="text-center text-muted "><a href="login.php">Back to Login</a></p>
+        <p class="text-center text-muted "><a href="login.php">Back to Sign in</a></p>
 	</form>
 </body>
 </html>

@@ -17,6 +17,7 @@
         $filename = 'image_'.date('mdYhis');
         
     //move_uploaded_file($tmpfilename,$store);
+        $statusMsg="";
         if(move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $filename.'.'.$ext)){
 
             // Insert image file name into database
@@ -25,11 +26,15 @@
             $query = "INSERT into images (user_id,file_name, uploaded_on) VALUES ( $user_id,'".$file_fullname."', NOW())";
             $insert = $link->query($query);
             if($insert){
-               echo  $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+                $_SESSION['upload_status_msg']=$statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{
-               echo  $statusMsg = "File upload failed, please try again.";
+                $_SESSION['upload_status_msg']=$statusMsg = "File upload entry failed in your user account, please try again.";
             } 
+        }else{
+            $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
         }
+        
+
     }
 
 

@@ -5,6 +5,11 @@ if(!$_SESSION["loggedin"] == true){
 // Redirect user to welcome page
 header("location: login.php");
 }
+if(!isset($_SESSION['upload_status_msg'])){
+  $upload_status_msg="Upload message to set";
+}else{
+  $upload_status_msg = $_SESSION['upload_status_msg'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -107,7 +112,7 @@ body {
       }, 
       success: function(res) {
         //console.log("ok");
-        html = '<h4 style="color:green">File successfully uploaded.</h4>';    
+        html = '<h4 style="color:green"><?= $upload_status_msg?></h4>';    
         $("#notificaton").html(html);
         $("#notificaton").show();
       
