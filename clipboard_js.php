@@ -31,11 +31,11 @@
                echo  $_SESSION['upload_status_msg']=$statusMsg = "File upload entry failed in your user account, please try again.";
             } 
         }else{
-            $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
+           echo  $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
         }
         
-exit;
-    }
+
+    }exit;
 
 
 
