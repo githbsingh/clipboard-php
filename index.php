@@ -21,7 +21,7 @@ if ( 0 < $_FILES['file']['error'] ) {
 //move_uploaded_file($tmpfilename,$store);
     $statusMsg="";
     if(move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $filename.'.'.$ext)){
-
+      ?><script>alert("file successfully Uploaded ! ")</script><?php
         // Insert image file name into database
         $user_id =  $_SESSION["id"];
         $file_fullname = $filename.'.'.$ext;
@@ -31,9 +31,12 @@ if ( 0 < $_FILES['file']['error'] ) {
            echo  $_SESSION['upload_status_msg']= $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
         }else{
            echo  $_SESSION['upload_status_msg']= $statusMsg = "File upload entry failed in your user account, please try again.";
+           ?><script>alert("file save failed for query <?php echo $query?>")</script><?php
         } 
+        
     }else{
-      // echo  $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
+       echo  $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
+       ?><script>alert("Error in file upload! ")</script><?php
     }
     
 
@@ -93,7 +96,9 @@ body {
 
       if (item.type.indexOf("image") != -1) {
 
-        var file = item.getAsFile();
+        var file = item.getAsFile(); 
+        //for text paste 
+        //var text = item.getAdText();
         console.log(file);
         previewFile(file);
         upload_file_with_ajax(file);
