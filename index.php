@@ -7,6 +7,7 @@ header("location: login.php");
 }
 // Include config file
 require_once "config.php";
+if (isset($_POST)) {
 $_SESSION['upload_status_msg']="Startng upload....";
 if ( 0 < $_FILES['file']['error'] ) {
     echo $_SESSION['upload_status_msg'] = 'Error: ' . $_FILES['file']['error'] . '<br>';
@@ -36,6 +37,7 @@ if ( 0 < $_FILES['file']['error'] ) {
     }
     
 
+}
 }
 
 
