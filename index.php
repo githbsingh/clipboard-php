@@ -5,6 +5,39 @@ if(!$_SESSION["loggedin"] == true){
 // Redirect user to welcome page
 header("location: login.php");
 }
+// Include config file
+require_once "config.php";
+$_SESSION['upload_status_msg']="Startng upload....";
+if ( 0 < $_FILES['file']['error'] ) {
+    echo $_SESSION['upload_status_msg'] = 'Error: ' . $_FILES['file']['error'] . '<br>';
+}else {
+   // $name='myfile_'.date('m-d-Y_hia');
+    //$time = date("d-m-Y")."-".time() ;
+    $img=$_FILES['file']['name'];
+    $ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
+    $filename = 'image_'.date('mdYhis');
+    
+//move_uploaded_file($tmpfilename,$store);
+    $statusMsg="";
+    if(move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $filename.'.'.$ext)){
+
+        // Insert image file name into database
+        $user_id =  $_SESSION["id"];
+        $file_fullname = $filename.'.'.$ext;
+        $query = "INSERT into images (user_id,file_name, uploaded_on) VALUES ( $user_id,'".$file_fullname."', NOW())";
+        $insert = $link->query($query);
+        if($insert){
+           echo  $_SESSION['upload_status_msg']= $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+        }else{
+           echo  $_SESSION['upload_status_msg']= $statusMsg = "File upload entry failed in your user account, please try again.";
+        } 
+    }else{
+       echo  $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
+    }
+    
+
+}
+
 
 ?>
 
@@ -60,9 +93,9 @@ body {
 
         var file = item.getAsFile();
         console.log(file);
-        
-        upload_file_with_ajax(file);
         previewFile(file);
+        upload_file_with_ajax(file);
+        
       }
     }
   }
@@ -96,7 +129,7 @@ body {
     $("#notificaton").hide();
    
       
-    $.ajax('./clipboard_js.php' , {
+    $.ajax('./index.php' , {
 
       type: 'POST',
       contentType: false,
