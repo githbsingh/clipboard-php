@@ -5,11 +5,10 @@
     
     // Include config file
     require_once "config.php";
-
+    $_SESSION['upload_status_msg']="Startng upload....";
     if ( 0 < $_FILES['file']['error'] ) {
-        echo 'Error: ' . $_FILES['file']['error'] . '<br>';
-    }
-    else {
+        echo $_SESSION['upload_status_msg'] = 'Error: ' . $_FILES['file']['error'] . '<br>';
+    }else {
        // $name='myfile_'.date('m-d-Y_hia');
         //$time = date("d-m-Y")."-".time() ;
         $img=$_FILES['file']['name'];
@@ -26,16 +25,16 @@
             $query = "INSERT into images (user_id,file_name, uploaded_on) VALUES ( $user_id,'".$file_fullname."', NOW())";
             $insert = $link->query($query);
             if($insert){
-               echo  $_SESSION['upload_status_msg']=$statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+               echo  $_SESSION['upload_status_msg']= $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{
-               echo  $_SESSION['upload_status_msg']=$statusMsg = "File upload entry failed in your user account, please try again.";
+               echo  $_SESSION['upload_status_msg']= $statusMsg = "File upload entry failed in your user account, please try again.";
             } 
         }else{
            echo  $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
         }
         
 
-    }die;
+    }
 
 
 
