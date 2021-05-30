@@ -5,44 +5,6 @@ if(!$_SESSION["loggedin"] == true){
 // Redirect user to welcome page
 header("location: login.php");
 }
-// Include config file
-require_once "config.php";
-if (isset($_POST)) {
-echo $_SESSION['upload_status_msg']="Startng upload....";
-if ( 0 < $_FILES['file']['error'] ) {
-    echo $_SESSION['upload_status_msg'] = 'Error: ' . $_FILES['file']['error'] . '<br>';
-}else {
-   // $name='myfile_'.date('m-d-Y_hia');
-    //$time = date("d-m-Y")."-".time() ;
-    $img=$_FILES['file']['name'];
-    $ext = strtolower(pathinfo($img, PATHINFO_EXTENSION));
-    $filename = 'image_'.date('mdYhis');
-    
-//move_uploaded_file($tmpfilename,$store);
-    $statusMsg="";
-    if(move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $filename.'.'.$ext)){
-      ?><script>alert("file successfully Uploaded ! ")</script><?php
-        // Insert image file name into database
-        $user_id =  $_SESSION["id"];
-        $file_fullname = $filename.'.'.$ext;
-        $query = "INSERT into images (user_id,file_name, uploaded_on) VALUES ( $user_id,'".$file_fullname."', NOW())";
-        $insert = $link->query($query);
-        if($insert){
-           echo  $_SESSION['upload_status_msg']= $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-        }else{
-           echo  $_SESSION['upload_status_msg']= $statusMsg = "File upload entry failed in your user account, please try again.";
-           ?><script>alert("file save failed for query <?php echo $query?>")</script><?php
-        } 
-        
-    }else{
-       echo  $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
-       ?><script>alert("Error in file upload! ")</script><?php
-    }
-    
-
-}
-}
-
 
 ?>
 
@@ -96,13 +58,10 @@ body {
 
       if (item.type.indexOf("image") != -1) {
 
-        var file = item.getAsFile(); 
-        //for text paste 
-        //var text = item.getAdText();
+        var file = item.getAsFile();
         console.log(file);
         previewFile(file);
         upload_file_with_ajax(file);
-        
       }
     }
   }
@@ -136,7 +95,7 @@ body {
     $("#notificaton").hide();
    
       
-    $.ajax('./index.php' , {
+    $.ajax('./clipboard_js.php' , {
 
       type: 'POST',
       contentType: false,
@@ -148,12 +107,8 @@ body {
         $("#notificaton").show();
       }, 
       success: function(res) {
-        console.log("Successfully posted file for upload.");
-        html = '<h4 style="color:green"><?php if(!isset($_SESSION['upload_status_msg'])){
-               echo  $upload_status_msg="Upload message to set";
-              }else{
-               echo $upload_status_msg = $_SESSION['upload_status_msg'];
-              } ?></h4>';    
+        console.log("Successfully posted the file.");
+        html = '<h4 style="color:green"></h4>';    
         $("#notificaton").html(html);
         $("#notificaton").show();
       

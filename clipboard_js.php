@@ -5,10 +5,11 @@
     
     // Include config file
     require_once "config.php";
-    $_SESSION['upload_status_msg']="Startng upload....";
+
     if ( 0 < $_FILES['file']['error'] ) {
-        echo $_SESSION['upload_status_msg'] = 'Error: ' . $_FILES['file']['error'] . '<br>';
-    }else {
+        echo 'Error: ' . $_FILES['file']['error'] . '<br>';
+    }
+    else {
        // $name='myfile_'.date('m-d-Y_hia');
         //$time = date("d-m-Y")."-".time() ;
         $img=$_FILES['file']['name'];
@@ -16,7 +17,7 @@
         $filename = 'image_'.date('mdYhis');
         
     //move_uploaded_file($tmpfilename,$store);
-        $statusMsg="";
+        
         if(move_uploaded_file($_FILES['file']['tmp_name'], 'uploads/' . $filename.'.'.$ext)){
 
             // Insert image file name into database
@@ -25,12 +26,12 @@
             $query = "INSERT into images (user_id,file_name, uploaded_on) VALUES ( $user_id,'".$file_fullname."', NOW())";
             $insert = $link->query($query);
             if($insert){
-               echo  $_SESSION['upload_status_msg']= $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+                echo $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{
-               echo  $_SESSION['upload_status_msg']= $statusMsg = "File upload entry failed in your user account, please try again.";
+                echo $statusMsg = "File upload entry failed in your user account, please try again.";
             } 
         }else{
-           echo  $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
+            echo $statusMsg= "File upload failed, please try again.";
         }
         
 
