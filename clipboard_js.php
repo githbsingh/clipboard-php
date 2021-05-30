@@ -26,15 +26,15 @@
             $query = "INSERT into images (user_id,file_name, uploaded_on) VALUES ( $user_id,'".$file_fullname."', NOW())";
             $insert = $link->query($query);
             if($insert){
-                $_SESSION['upload_status_msg']=$statusMsg = "The file ".$fileName. " has been uploaded successfully.";
+               echo  $_SESSION['upload_status_msg']=$statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{
-                $_SESSION['upload_status_msg']=$statusMsg = "File upload entry failed in your user account, please try again.";
+               echo  $_SESSION['upload_status_msg']=$statusMsg = "File upload entry failed in your user account, please try again.";
             } 
         }else{
             $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
         }
         
-
+exit;
     }
 
 
