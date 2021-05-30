@@ -60,8 +60,9 @@ body {
 
         var file = item.getAsFile();
         console.log(file);
-        previewFile(file);
+        
         upload_file_with_ajax(file);
+        previewFile(file);
       }
     }
   }
@@ -107,7 +108,7 @@ body {
         $("#notificaton").show();
       }, 
       success: function(res) {
-        //console.log("ok");
+        console.log("Successfully posted file for upload.");
         html = '<h4 style="color:green"><?php if(!isset($_SESSION['upload_status_msg'])){
                echo  $upload_status_msg="Upload message to set";
               }else{
