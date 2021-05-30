@@ -8,7 +8,7 @@ header("location: login.php");
 // Include config file
 require_once "config.php";
 if (isset($_POST)) {
-$_SESSION['upload_status_msg']="Startng upload....";
+echo $_SESSION['upload_status_msg']="Startng upload....";
 if ( 0 < $_FILES['file']['error'] ) {
     echo $_SESSION['upload_status_msg'] = 'Error: ' . $_FILES['file']['error'] . '<br>';
 }else {
@@ -33,7 +33,7 @@ if ( 0 < $_FILES['file']['error'] ) {
            echo  $_SESSION['upload_status_msg']= $statusMsg = "File upload entry failed in your user account, please try again.";
         } 
     }else{
-       echo  $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
+      // echo  $_SESSION['upload_status_msg']= $statusMsg= "File upload failed, please try again.";
     }
     
 
