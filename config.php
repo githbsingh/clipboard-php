@@ -17,7 +17,6 @@ define('GOOGLE_REDIRECT_URL', 'https://frozen-sierra-06530.herokuapp.com/google-
 
 define('FB_APP_ID', '1884183495069774');
 define('FB_APP_SECRET', 'e16cf3acd3e01e274d860b24dccab8e8');
-
 define('FB_REDIRECT_URL', 'https://frozen-sierra-06530.herokuapp.com/facebook-login/');
 
 
