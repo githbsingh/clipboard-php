@@ -107,7 +107,7 @@ footer{
       processData: false,
       data: formData,
       error: function() {
-        console.log("error");
+        console.log();
         $("#notificaton").html('<p>'+error+'</p>');
         $("#notificaton").show();
       }, 
