@@ -151,8 +151,8 @@ header("location: login.php");
                
     <div class="col-md-4">
       <div class="thumbnail" >
-        <a href="<?php echo "https://clipboard-uploads-dev.s3.us-east-1.amazonaws.com/".$image ; ?>" target="_blank">
-          <img src="<?php echo "https://clipboard-uploads-dev.s3.us-east-1.amazonaws.com/".$image ; ?>" alt="Fjords" style="width:100%">
+        <a href="<?php echo "https://clipboard-uploads.s3.us-east-1.amazonaws.com/".$image ; ?>" target="_blank">
+          <img src="<?php echo "https://clipboard-uploads.s3.us-east-1.amazonaws.com/".$image ; ?>" alt="Fjords" style="width:100%">
           <div class="caption" align="center">
             <!--<p><?php echo str_replace("uploads/", '',$image );?></p>-->
             <?=$image ?>
