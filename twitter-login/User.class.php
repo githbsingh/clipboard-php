@@ -94,9 +94,8 @@ class User {
             // Get user data from the database  
             $result = $this->db->query($checkQuery);
             //Setting User sessin variable.
-             
-            $userData = $result->fetch_assoc(); 
-            while ($userData) {
+           
+            while ($userData = $result->fetch_assoc()) {
                 echo $_SESSION["id"] = $userData["id"];
                 echo $_SESSION["email"] = $userData["email"];
             }

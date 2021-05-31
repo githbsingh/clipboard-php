@@ -15,6 +15,7 @@ if(isset($_REQUEST['oauth_token']) && $_SESSION['token'] !== $_REQUEST['oauth_to
 // If user already verified  
 if(isset($_SESSION['status']) && $_SESSION['status'] == 'verified' && !empty($_SESSION['request_vars'])){ 
    
+    header("Location: ../login.php");
     //Retrive variables from session 
     $username         = $_SESSION['request_vars']['screen_name']; 
     $twitterId        = $_SESSION['request_vars']['user_id']; 
