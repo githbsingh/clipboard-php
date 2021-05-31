@@ -43,9 +43,9 @@
         $tmpfile = $_FILES['file']['tmp_name'];
         $file = $_FILES['file']['name'];
         $statusMsg="";
-        $bucketName = 'clipboard-uploads';
+        echo $bucketName = 'clipboard-uploads';
         if (defined('AWS_S3_URL')) {
-            // Persist to AWS S3 and delete uploaded file
+            echo  "Persist to AWS S3 and delete uploaded file";
             //require_once('S3.php');
             S3::setAuth(AWS_S3_KEY, AWS_S3_SECRET);
             S3::setRegion(AWS_S3_REGION);
@@ -83,6 +83,9 @@
                   }
       
                   unlink($tmpfile);
+            }else{
+
+                echo "S3::putObjectFile failed";
             }    
             
         } else {
