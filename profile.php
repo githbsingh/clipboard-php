@@ -1,4 +1,31 @@
-<?php include('logic.php'); ?>
+<?php 
+
+require_once "config.php";
+if($_SESSION['loggedin']){
+
+  $db = $link;  
+  // Check whether the user already exists in the database  
+  $checkQuery = "SELECT * FROM users WHERE id = ".$_SESSION['id'];  
+  // $_SESSION["twitter"]=$data;
+   $checkResult = $db->query($checkQuery);  
+     
+    // Get user data from the database  
+   
+  
+    while ($userData = $checkResult->fetch_assoc()) {
+      $user_name   = $userData["first_name"].' '.$userData["last_name"];
+      $user_email   = $userData["email"];
+      $user_image   = ($userData["picture"]==null?"img/user-icon.png":$userData["picture"]);
+      $user_account_type   = $userData["oauth_provider"];
+      //$user_image ="img/user-icon.png";
+    }       
+    
+}else{
+
+    header("Location: ../login.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +43,19 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style type="text/css">
+      
         footer{
-        position:absolute;
-        margin-left: 38%;
-        margin-right: 38%;
-        bottom:0px;
+            position:absolute;
+            margin-left: 38%;
+            margin-right: 38%;
+            bottom:0px;
+        }
+  
+        .form-group {
+            margin: 25px 35px !important;
+        }
+        .label-title {
+            font-weight: bold;
         }
     </style>
 
@@ -37,7 +72,8 @@
     </div>
 
 	<form action="enter-email.php" method="post">
-		<h2 class="form-title">Reset password</h2>
+        <div class="row"><img src="<?=$user_image ?>" style="margin:auto;" width="100" height="100" class="d-inline-block align-top" alt=""> </div>
+		<h2 class="form-title"><?=$user_name ?></h2>
 		<!-- form validation messages
 		<?php include('messages.php'); ?> 
 		<div class="form-group">
@@ -45,21 +81,25 @@
 			<input type="email" name="email">
 		</div>-->
         <div class="form-group">
-            <div class="input-group">    
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">
-                            <span class="fa fa-at"></span>
-                        </span>                    
-                    </div>
-                <input type="email" class="form-control" name="email" placeholder="email" required="required">
+            <div class="col-6">  
+            <label class="label-title">Email</label> 
+            
+            <label ><?=$user_email ?></label>
             </div>
         </div>
-		<div class="form-group">
-			<button type="submit" name="reset-password" class="btn btn-primary">Submit</button>
-		</div>
+        <div class="form-group">
+            <div class="col-6"> 
+            <label class="label-title">Account Type</label>  
+            
+            <label ><?=$user_account_type ?></label>
+            </div>
+            
+        </div>
+       		
         
-        <p class="text-center text-muted "><a href="login.php">Back to Login</a></p>
+        <p class="text-center text-muted "><a href="index.php">Back to Home</a></p>
 	</form>
     <footer class="page-footer font-small" ><div class="footer-copyright"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+    
 </body>
 </html>

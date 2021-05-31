@@ -113,6 +113,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             background-size: cover; /* Resize the background image to cover the entire container */
             /*padding-top: 25vh;	*/
     }
+    footer{
+      position:absolute;
+      margin-left: 38%;
+      margin-right: 38%;
+      bottom:0px;
+    }
     .login-form {
         width: 400px;
         margin: 30px auto;
@@ -219,5 +225,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     </form>
     <p class="text-center text-muted small">Don't have an account? <a href="registration.php">Sign up here!</a></p>
 </div>
+<footer class="page-footer font-smal blue"><div class="footer-copyright text-center"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 </html>

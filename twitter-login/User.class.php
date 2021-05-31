@@ -53,11 +53,15 @@ class User {
                 // Update user data in the database  
                 $query = "UPDATE ".$this->userTbl." SET ".$colvalSet.$whereSql;  
                 $update = $this->db->query($query);  
-                if ($update === TRUE) {
-                    echo "New record created successfully";
-                } else {
-                    echo "Error: " . $query . "<br>" . $this->db->error;
-                }  
+             
+                while ($row = $checkResult->fetch_assoc()) {
+                    echo $_SESSION["id"] = $row["id"];
+                    echo $_SESSION["email"] = $row["email"];
+                }
+                $_SESSION["loggedin"] = true;
+                   
+                header("Location: ../login.php");
+                
                 
             }else{  
                 // Add created time to the data array  
@@ -84,17 +88,21 @@ class User {
                 } else {
                     echo "Error: " . $query . "<br>" . $this->db->error;
                 }  
+                
             }  
               
             // Get user data from the database  
-            $result = $this->db->query($checkQuery); 
-            if ($result === TRUE) {
-                echo "New record created successfully";
-            } else {
-                echo "Error: " . $checkQuery . "<br>" . $this->db->error;
-            }              
-              
-            $userData = $result->fetch_assoc();  
+            $result = $this->db->query($checkQuery);
+            //Setting User sessin variable.
+             
+            $userData = $result->fetch_assoc(); 
+            while ($userData) {
+                echo $_SESSION["id"] = $userData["id"];
+                echo $_SESSION["email"] = $userData["email"];
+            }
+            $_SESSION["loggedin"] = true;
+               
+            header("Location: ../login.php");
         }  
           
         // Return user data  

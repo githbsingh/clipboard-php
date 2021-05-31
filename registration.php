@@ -133,6 +133,14 @@ body {
     background-size: cover;
 }
 
+    footer{
+        position:absolute;
+        margin-left: 38%;
+        margin-right: 38%;
+        bottom:0px;
+    }
+
+
 
 </style>
 <style type="text/css">
@@ -237,5 +245,6 @@ body {
     </form>
     
 </div>
+<footer class="page-footer font-small" ><div class="footer-copyright"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 </html>

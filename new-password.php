@@ -13,6 +13,14 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style type="text/css">
+        footer{
+        position:absolute;
+        margin-left: 38%;
+        margin-right: 38%;
+        bottom:0px;
+        }
+    </style>
 </head>
 <body>
     <div class="row" style="margin-top:40px;">
@@ -59,7 +67,8 @@
 		<div class="form-group">
 			<button type="submit" name="new_password" class="btn btn-primary">Submit</button>
 		</div>
-        <p class="text-center text-muted "><a href="login.php">Back to Sign in</a></p>
+        <p class="text-center text-muted "><a href="login.php">Back to Login</a></p>
 	</form>
+    <footer class="page-footer font-small" ><div class="footer-copyright"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 </html>

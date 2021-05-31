@@ -1,5 +1,6 @@
 <?php
 require_once "config.php";
+//require_once "amazon-s3/S3.php";
 if(!$_SESSION["loggedin"] == true){
 
 // Redirect user to welcome page
@@ -13,18 +14,18 @@ header("location: login.php");
 <head>
   <title>Clipboard</title>
   <!-- add icon link -->
- <link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
+  <link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-<style type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
   body {
    /* color: #fff;
     background: #63738a;
@@ -47,6 +48,12 @@ header("location: login.php");
     }
     .row-margin{
       margin:10px 0px 0px 0px;
+    }
+    footer{
+      position:absolute;
+      margin-left: 38%;
+      margin-right: 38%;
+      bottom:0px;
     }
 </style>
 </head>
@@ -108,7 +115,7 @@ header("location: login.php");
   <div class="row row-margin" style="background:white" >
   <?php
     $user_id = $_SESSION["id"];
-    $dir_name = "uploads/";
+    //$dir_name = "uploads/";
     $where="";
     $query="SELECT file_name FROM  images";
     if($user_id == 8){
@@ -124,8 +131,6 @@ header("location: login.php");
       $where =$where. "and file_name LIKE '%".$pattern."%'";
     }
 
-   // $raw_results = mysql_query("SELECT * FROM articles
-		//	WHERE (`title` LIKE '%".$query."%') OR (`text` LIKE '%".$query."%')") or die(mysql_error());
     $query=$query.' '.$where;
     
     $results = mysqli_query($link, $query);
@@ -136,12 +141,9 @@ header("location: login.php");
     }
 
     while($row = mysqli_fetch_array($results)) { 
-      //echo($row[0] . "<BR>");  
-      $image = $dir_name.$row[0];  
-    /*      $images = glob($dir_name."*.png");
-            foreach($images as $image) {
-                  
-    */
+     
+      $image = $row[0];  
+
   ?>
 
   
@@ -149,10 +151,11 @@ header("location: login.php");
                
     <div class="col-md-4">
       <div class="thumbnail" >
-        <a href="<?= $image ?>" target="_blank">
-          <img src="<?= $image ?>" alt="Fjords" style="width:100%">
+        <a href="<?php echo "https://clipboard-uploads-dev.s3.us-east-1.amazonaws.com/".$image ; ?>" target="_blank">
+          <img src="<?php echo "https://clipboard-uploads-dev.s3.us-east-1.amazonaws.com/".$image ; ?>" alt="Fjords" style="width:100%">
           <div class="caption" align="center">
-            <p><?php echo str_replace("uploads/", '',$image );?></p>
+            <!--<p><?php echo str_replace("uploads/", '',$image );?></p>-->
+            <?=$image ?>
           </div>
         </a>
       </div>      
@@ -163,7 +166,7 @@ header("location: login.php");
 
   </div>
 </div>
-
+<footer class="page-footer font-small" ><div class="footer-copyright"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 </html>
 

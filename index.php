@@ -5,7 +5,6 @@ if(!$_SESSION["loggedin"] == true){
 // Redirect user to welcome page
 header("location: login.php");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +40,12 @@ body {
 .row-margin{
   margin:10px 0px 0px 0px;
 }
+footer{
+      position:absolute;
+      margin-left: 38%;
+      margin-right: 38%;
+      bottom:0px;
+    }
 </style>
 
 <script>
@@ -107,7 +112,8 @@ body {
         $("#notificaton").show();
       }, 
       success: function(res) {
-        console.log(JSON.stringify(res));
+        console.log(res);
+        //html = '<p style="color:orange">'+res+'</p>';
         html = '<h4 style="color:green">The file has been uploaded successfully.</h4>';    
         $("#notificaton").html(html);
         $("#notificaton").show();
@@ -142,7 +148,7 @@ body {
         <i class="fa fa-user fa-fw"></i>User
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="profile.php">Profile</a>
           <a class="dropdown-item" href="logout.php">Logout</a>
           
         </div>
@@ -177,5 +183,6 @@ body {
 
   <!--<p><a href="flexgallery.php">Flex Gallery</a></p>-->
  </div>
+ <footer class="page-footer font-small" ><div class="footer-copyright"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 </html>
