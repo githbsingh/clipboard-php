@@ -114,10 +114,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             /*padding-top: 25vh;	*/
     }
     footer{
-      position:absolute;
-      margin-left: 38%;
-      margin-right: 38%;
-      bottom:0px;
+       /* position:absolute;bottom:0px;*/
+        margin-left: 38%;
+        margin-right: 38%;
+        margin-top:100px
+        
     }
     .login-form {
         width: 400px;

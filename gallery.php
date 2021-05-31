@@ -50,10 +50,11 @@ header("location: login.php");
       margin:10px 0px 0px 0px;
     }
     footer{
-      position:absolute;
-      margin-left: 38%;
-      margin-right: 38%;
-      bottom:0px;
+       /* position:absolute;bottom:0px;*/
+        margin-left: 38%;
+        margin-right: 38%;
+        margin-top:100px
+        
     }
 </style>
 </head>

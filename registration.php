@@ -134,12 +134,12 @@ body {
 }
 
     footer{
-        position:absolute;
+       /* position:absolute;bottom:0px;*/
         margin-left: 38%;
         margin-right: 38%;
-        bottom:0px;
+        margin-top:100px
+        
     }
-
 
 
 </style>
