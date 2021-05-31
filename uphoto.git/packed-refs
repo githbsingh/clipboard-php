@@ -1,0 +1,4 @@
+# pack-refs with: peeled fully-peeled sorted 
+18e94077e26d87a8aea96671c7c3147e11968ede refs/heads/main
+18e94077e26d87a8aea96671c7c3147e11968ede refs/remotes/origin/HEAD
+18e94077e26d87a8aea96671c7c3147e11968ede refs/remotes/origin/main
