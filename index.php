@@ -184,6 +184,6 @@ body {
 
   <!--<p><a href="flexgallery.php">Flex Gallery</a></p>-->
  </div>
- <footer class="page-footer font-small" ><div class="footer-copyright"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+ <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 </html>

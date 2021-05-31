@@ -70,6 +70,6 @@
 		</div>
         <p class="text-center text-muted "><a href="login.php">Back to Login</a></p>
 	</form>
-    <footer class="page-footer font-small" ><div class="footer-copyright" style="text-align: center;"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+    <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 </html>
