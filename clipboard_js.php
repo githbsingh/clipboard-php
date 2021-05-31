@@ -43,15 +43,15 @@
         $tmpfile = $_FILES['file']['tmp_name'];
         $file = $_FILES['file']['name'];
         $statusMsg="";
-        echo $bucketName = 'clipboard-uploads';
+        $bucketName = 'clipboard-uploads';
         if (defined('AWS_S3_URL')) {
-            echo  "Persist to AWS S3 and delete uploaded file";
+            // Persist to AWS S3 and delete uploaded file
             //require_once('S3.php');
             S3::setAuth(AWS_S3_KEY, AWS_S3_SECRET);
             S3::setRegion(AWS_S3_REGION);
             S3::setSignatureVersion('v4');
             // Create a bucket with public read access
-            if (S3::putBucket($bucketName, S3::ACL_PUBLIC_READ)) {
+           // if (S3::putBucket($bucketName, S3::ACL_PUBLIC_READ)) {
                 echo "Created bucket clipboard-uploads";
                 //if(S3::putObject(S3::inputFile($tmpfile), AWS_S3_BUCKET, 'clipboard-uploads/'.$file, S3::ACL_PUBLIC_READ)){
                 if (S3::putObjectFile($tmpfile, $bucketName, $file_fullname, S3::ACL_PUBLIC_READ)) {
@@ -83,10 +83,7 @@
                   }
       
                   unlink($tmpfile);
-            }else{
-
-                echo "S3::putObjectFile failed";
-            }    
+           // }    
             
         } else {
             // Persist to disk
