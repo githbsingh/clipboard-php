@@ -99,6 +99,9 @@ body {
     var formData = new FormData();
     formData.append('file', file);
     $("#notificaton").hide();
+    html = '<h4 style="color:green">Uploading....</h4>';    
+    $("#notificaton").html(html);
+    $("#notificaton").show();
    
       
     $.ajax('./clipboard_js.php' , {
@@ -109,7 +112,8 @@ body {
       data: formData,
       error: function() {
         console.log();
-        $("#notificaton").html('<p>'+error+'</p>');
+        html = '<h4 style="color:orange">Error occurred while uploading your image, please try again later.</h4>';    
+        $("#notificaton").html(html);        
         $("#notificaton").show();
       }, 
       success: function(res) {

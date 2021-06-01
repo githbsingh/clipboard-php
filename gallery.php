@@ -49,6 +49,7 @@ header("location: login.php");
     .row-margin{
       margin:10px 0px 0px 0px;
     }
+  
     footer{
        /* position:absolute;bottom:0px;*/
         margin-left: 38%;
@@ -61,12 +62,12 @@ header("location: login.php");
 <body>
 
 <div class="container">
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
   <!-- Brand -->
   <a class="navbar-brand" href="index.php"><img src="img/clipboard-flat.png" width="30" height="30" class="d-inline-block align-top" alt=""> Clipboard</a>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.php" >Home</a>
+        <a class="nav-link" href="index.php" >Tools</a>
       </li>
       <li class="nav-item  active">
         <a class="nav-link" href="gallery.php">Gallery</a>
@@ -80,7 +81,7 @@ header("location: login.php");
         <i class="fa fa-user fa-fw"></i>User
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Profile</a>
+          <a class="dropdown-item" href="profile.php">Profile</a>
           <a class="dropdown-item" href="logout.php">Logout</a>
           
         </div>
@@ -144,6 +145,8 @@ header("location: login.php");
     while($row = mysqli_fetch_array($results)) { 
      
       $image = $row[0];  
+      $imageurl = "https://clipboard-uploads-dev.s3.us-east-1.amazonaws.com/".$image; 
+      $url_id = "url_".pathinfo($image, PATHINFO_FILENAME);
 
   ?>
 
@@ -151,23 +154,55 @@ header("location: login.php");
         
                
     <div class="col-md-4">
+
+      <a data-target="#<?=pathinfo($image, PATHINFO_FILENAME)?>" data-toggle="modal" href="#" class="color-gray-darker td-hover-none">
       <div class="thumbnail" >
-        <a href="<?php echo "https://clipboard-uploads-dev.s3.us-east-1.amazonaws.com/".$image ; ?>" target="_blank">
-          <img src="<?php echo "https://clipboard-uploads-dev.s3.us-east-1.amazonaws.com/".$image ; ?>" alt="Fjords" style="width:100%">
+        <!--<a href="<?php echo $imageurl ; ?>" target="_blank">-->
+          <img src="<?php echo $imageurl; ?>" alt="Fjords" style="width:100%">
           <div class="caption" align="center">
             <!--<p><?php echo str_replace("uploads/", '',$image );?></p>-->
-            <?=$image ?>
+            <?=pathinfo($image, PATHINFO_FILENAME) ?>
           </div>
         </a>
       </div>      
     </div>
+
+  <!--Modal start-->
+  <div aria-hidden="true" aria-labelledby="myModalLabel" class="modal fade" id="<?=pathinfo($image, PATHINFO_FILENAME)?>" role="dialog" tabindex="-1">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body mb-0 p-0">
+          <img src="<?php echo $imageurl; ?>" alt="" style="width:100%">
+        </div>
+        <div class="modal-footer">
+          <div><a  class="btn btn-outline-success btn-rounded btn-md ml-4 text-center" href="<?php echo $imageurl; ?>" target="_blank">Download</a></div>
+          <button class="btn btn-outline-success btn-rounded btn-md ml-4 text-center" value="kuch bhi " type="button" onclick="copyLink(<?=$url_id?>)">Copy Link</button>
+          <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
+          <input hidden= true type="text" id="<?=$url_id?>" value="<?=$imageurl?>">
+      
+        </div>
+      </div>
+    </div>
+  </div>
 
     <?php }?>
 
 
   </div>
 </div>
-<footer class="page-footer font-small" ><div class="footer-copyright text-center"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+<footer class="page-footer font-small"><div class="footer-copyright text-center"><p style="color: white;font-weight: 100;mix-blend-mode: difference;">&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+
+<script type="text/javascript">
+function copyLink(url){
+  /*alert("Copy text to Clipboard: " + url.id);*/
+  var text = document.getElementById(url.id);
+  text.select();
+  document.execCommand("copy");
+  console.log("Copy text to Clipboard: " + text.value);
+  /*alert("Copy text to Clipboard: " + text.value);*/
+}
+</script>
+
 </body>
 </html>
 
