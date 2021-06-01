@@ -7,23 +7,25 @@ define('DB_PASSWORD', '');
 define('DB_NAME', 'clipboard');
 define('DB_USER_TBL', 'users');
 
+define('BASE_URL', 'https://frozen-sierra-06530.herokuapp.com/');
+
 // Google API configuration
 define('GOOGLE_CLIENT_ID', '675155176476-0fjf5lrv7eb7vfccdiif8ae5tg8uef26.apps.googleusercontent.com');
 define('GOOGLE_CLIENT_SECRET', '9rosAU-vXt4YsXRokyPR7hAV');
-define('GOOGLE_REDIRECT_URL', 'https://frozen-sierra-06530.herokuapp.com/google-login/');
+define('GOOGLE_REDIRECT_URL', BASE_URL.'google-login/');
 
 
 // Facebook API configuration
 
 define('FB_APP_ID', '1884183495069774');
 define('FB_APP_SECRET', 'e16cf3acd3e01e274d860b24dccab8e8');
-define('FB_REDIRECT_URL', 'https://frozen-sierra-06530.herokuapp.com/facebook-login/');
+define('FB_REDIRECT_URL', BASE_URL.'facebook-login/');
 
 
 // Twitter API configuration 
 define('TW_CONSUMER_KEY', 'qmkVKcZsx64qs2jLocadXa9b4'); 
 define('TW_CONSUMER_SECRET', '3MXlFzsLosOitwUzujupoDyjMEZnRei59n7hJVupqHCB4y6b88'); 
-define('TW_REDIRECT_URL', 'https://frozen-sierra-06530.herokuapp.com/twitter-login/'); 
+define('TW_REDIRECT_URL', BASE_URL.'twitter-login/'); 
 
 //Aws S3 configuration 
 
