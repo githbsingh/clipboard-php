@@ -67,7 +67,7 @@ header("location: login.php");
   <a class="navbar-brand" href="index.php"><img src="img/clipboard-flat.png" width="30" height="30" class="d-inline-block align-top" alt=""> Clipboard</a>
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" href="index.php" >Tools</a>
+        <a class="nav-link" href="index.php" >Home</a>
       </li>
       <li class="nav-item  active">
         <a class="nav-link" href="gallery.php">Gallery</a>
