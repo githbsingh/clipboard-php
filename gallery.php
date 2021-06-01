@@ -175,10 +175,11 @@ header("location: login.php");
           <img src="<?php echo $imageurl; ?>" alt="" style="width:100%">
         </div>
         <div class="modal-footer">
+          <input type="text" id="<?=$url_id?>" value="<?=$imageurl?>">
           <div><a  class="btn btn-outline-success btn-rounded btn-md ml-4 text-center" href="<?php echo $imageurl; ?>" target="_blank">Download</a></div>
           <button class="btn btn-outline-success btn-rounded btn-md ml-4 text-center" value="kuch bhi " type="button" onclick="copyLink(<?=$url_id?>)">Copy Link</button>
           <button class="btn btn-outline-primary btn-rounded btn-md ml-4 text-center" data-dismiss="modal" type="button">Close</button>
-          <input hidden= true type="text" id="<?=$url_id?>" value="<?=$imageurl?>">
+          
       
         </div>
       </div>
