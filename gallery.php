@@ -200,7 +200,7 @@ function copyLink(url){
   text.select();
   document.execCommand("copy");
   console.log("Copy text to Clipboard: " + text.value);
-  alert("Copied image url: " + text.value);
+  alert("Link Copied to Clipboard: " + text.value);
 }
 </script>
 
