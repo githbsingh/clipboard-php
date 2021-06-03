@@ -7,8 +7,8 @@ define('DB_PASSWORD', '');
 define('DB_NAME', 'clipboard');
 define('DB_USER_TBL', 'users');
 
-define('BASE_URL', 'https://frozen-sierra-06530.herokuapp.com/');
-//define('BASE_URL', 'https://cloudupp.herokuapp.com/');
+//define('BASE_URL', 'https://frozen-sierra-06530.herokuapp.com/');
+define('BASE_URL', 'https://cloudupp.herokuapp.com/');
 // Google API configuration
 define('GOOGLE_CLIENT_ID', '675155176476-0fjf5lrv7eb7vfccdiif8ae5tg8uef26.apps.googleusercontent.com');
 define('GOOGLE_CLIENT_SECRET', '9rosAU-vXt4YsXRokyPR7hAV');
