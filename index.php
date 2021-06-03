@@ -40,13 +40,71 @@ body {
 .row-margin{
   margin:10px 0px 0px 0px;
 }
-    footer{
+.row-clipboard{
+
+  /*outline: 2px dashed #92b0b3;
+  outline-offset: -10px;*/
+  -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  transition: outline-offset .15s ease-in-out, background-color .15s linear;
+  width: 100% !important;
+  height: 400px;
+  background-color:  #ffffff;
+
+}
+footer{
        /* position:absolute;bottom:0px;*/
         margin-left: 38%;
         margin-right: 38%;
         margin-top:100px
         
     }
+
+.files input {
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 120px 0px 85px 35%;
+    text-align: center !important;
+    margin: 0;
+    width: 100% !important;
+    height:40%
+}
+.files input:focus{     outline: 2px dashed #92b0b3;  outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
+ }
+.files{ position:relative}
+.files:after {  pointer-events: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 50px;
+    right: 0;
+    height: 56px;
+    content: "";
+    background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
+    display: block;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.color input{ background-color:#f1f1f1;}
+.files:before {
+    position: absolute;
+    bottom: 10px;
+    left: 0;  pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: " or drag it here. ";
+    display: block;
+    margin: 0 auto;
+    color: #2ea591;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+}
 </style>
 
 <script>
@@ -96,11 +154,12 @@ body {
 
   function upload_file_with_ajax(file){
 
+
     var formData = new FormData();
     formData.append('file', file);
     $("#notificaton").hide();
-    html = '<h4 style="color:green">Uploading....</h4>';    
-    $("#notificaton").html(html);
+    html = '<h4 style="color:green">Uploading......</h4>';    
+    $("#notificaton").html(html);       
     $("#notificaton").show();
    
       
@@ -111,9 +170,9 @@ body {
       processData: false,
       data: formData,
       error: function() {
-        console.log();
+        console.log("error");
         html = '<h4 style="color:orange">Error occurred while uploading your image, please try again later.</h4>';    
-        $("#notificaton").html(html);        
+        $("#notificaton").html(html);       
         $("#notificaton").show();
       }, 
       success: function(res) {
@@ -127,27 +186,36 @@ body {
       }
     });
   }
+  function saveText() {
+    var text = document.getElementById('textareainput')
+    //copyText.value();
+    //document.execCommand('copy')
+    console.log(text.value)
+  }
+  function clearTextArea() {
+    document.getElementById("textareainput").innerHTML='';
+  }
 
 </script>
 
 </head>
 <body>
 <div class="container" >
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
   <!-- Brand -->
   <a class="navbar-brand" href="index.php"><img src="img/clipboard-flat.png" width="30" height="30" class="d-inline-block align-top" alt=""> Clipboard</a>
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" style="margin-left: auto;">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php" >Home</a>
+        <a class="nav-link" href="index.php" >Tools</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gallery.php">Gallery</a>
+        <a class="nav-link" href="gallery.php">Files</a>
       </li>
    
    
       
-    </ul>
-    <ul class="navbar-nav" style="margin-left: auto;">
+   <!-- </ul>
+    <ul class="navbar-nav" >-->
     <li class="nav-item dropdown" >
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-user fa-fw"></i>User
@@ -161,33 +229,143 @@ body {
     </ul>
 
   </nav>
+  
+  <br>
+  
+   
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">Paste Image</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#tab1">Upload</a>
+    </li>
+    <!--<li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#tab2">Text</a>
+    </li>-->
+  </ul>
 
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div id="home" class="container tab-pane active"><br>
+       <!--<p> Click and paste here.</p>-->
+    
+        <div class="row row-margin">
+        
+          <button type="button" class="btn btn-sm btn-outline-dark" id="clear" onclick="clearImage()"><i class="fa fa-clipboard fa-fw"></i>Remove preview</button>
+          <div style="margin-left:auto;" id="notificaton"></div>
+          
+        </div>
+        <br>
+        
+        
+        <div class="row row-clipboard border"  id="pasteTarget">
+        
+          <h2 id="instruction" style="margin:auto;">Click and Paste image here to upload</h2>
+                  <div id="previewImg"></div>
+        </div>  
+      </div>
+      <div id="tab1" class="container tab-pane fade"><br>
+               
+        <div class="row">
+        <div id="notificaton1" class="col-md-12"></div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+            <form id="uploadForm" enctype="multipart/form-data">  
+                  <div class="form-group files">
+                    <label>Upload Your File </label>
+                    <input id="uploadFileId" name="file" type="file" class="form-control" multiple="">
+                  </div>
+                  <div class="form-group text-center">
+                  <input  type="submit" name="submit" class="btn btn-outline-primary"  value="Upload" >
+                  </div>
+            </form>
+        </div>    
   
-  <!--<p> Click and paste here.</p>-->
- 
-  <div class="row row-margin">
-    <!--<a class="btn btn-large btn-default" href="gallery.php"><i class="fa fa-file-image-o fa-fw"></i>View files</a> 
-    <a class="btn btn-large btn-default" id="clear" onclick="clearImage()"><i class="fa fa-undo fa-fw"></i>Remove preview</a>   
-    <a class="btn btn-large btn-default" href="logout.php"><i class="fa fa-sign-out fa-fw"></i>Logout</a>  
-    <p> </p>-->
-    <button type="button" class="btn btn-sm btn-outline-dark" id="clear" onclick="clearImage()"><i class="fa fa-clipboard fa-fw"></i>Remove preview</button>
-    <div style="margin-left:auto;" id="notificaton"></div>
-    <br>
-  </div>
-  
-  
-  <div class="row" style="margin: 10px 0px 0px 0px;width: 100%; height: 600px; background: grey; " id="pasteTarget">
-  <!--<div class="row" style="width: 100%; height: 600px; background: grey; display: flex; align-items: center; justify-content: center" id="pasteTarget">-->
-    <h2 id="instruction" style="margin:auto;">Click and Paste image here</h2>
-    <!--<img id="previewImg"  style="width: 100%;max-height: 600px;object-fit: cover;" >-->
-    <div id="previewImg"></div>
-  </div>
-  
-  
-  
+      </div>
 
-  <!--<p><a href="flexgallery.php">Flex Gallery</a></p>-->
- </div>
- <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+
+
+      </div>
+      <div id="tab2" class="container tab-pane fade"><br>
+      
+        
+        <div class="row">
+          <div class="col-md-12">
+                <div class="form-group file">    
+                    <textarea id="textareainput" class="form-control" style="height: 300px;" rows="3" placeholder="Paste text here"></textarea>
+                </div>
+          </div>    
+        </div>
+        <div class="raw" style="text-align:center">
+          <!--<label>Paste text here </label>-->
+          <button onclick="clearTextArea()" class="btn btn-outline-dark"  type="submit" value="Save">Cear</button>
+          <button onclick="saveText()" class="btn btn-outline-primary"   type="submit" value="Save">Save</button>
+        </div> 
+      </div>
+    </div><!-- Tab panes End-->
+      
+
+      <!--<p><a href="flexgallery.php">Flex Gallery</a></p>-->
+  </div><!-- Container End -->
+ <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p style="color: white;font-weight: 100;mix-blend-mode: difference;">&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  // File type validation
+  $("#uploadFileId").change(function() {
+      var file = this.files[0];
+      var fileType = file.type;
+      var match = ['application/pdf', 'application/msword', 'application/vnd.ms-office', 'image/jpeg', 'image/png', 'image/jpg','text/plain','application/vnd.ms-excel','application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      if(!((fileType == match[0]) || (fileType == match[1]) || (fileType == match[2]) || (fileType == match[3]) || (fileType == match[4]) || (fileType == match[5]) || (fileType == match[6])|| (fileType == match[7]) || (fileType == match[8]))){
+          alert('Sorry, only PDF, DOC, JPG, JPEG, & PNG files are allowed to upload.' + fileType);
+          $("#uploadFileId").val('');
+          return false;
+      }
+  });
+
+  // Submit form data via Ajax
+$(document).ready(function (e){
+  $("#uploadForm").on('submit',(function(e){
+    e.preventDefault();
+    html = '<p style="color:green">Uploading......</p>';    
+    $("#notificaton1").html(html);       
+    $("#notificaton1").show();
+    var formData = new FormData();
+
+    console.log("Form Data:"+JSON.stringify(formData));  
+    $.ajax({
+      url: "upload.php",
+      type: "POST",
+      data:  new FormData(this),  
+      contentType: false,
+      cache: false,
+      processData:false,
+      error: function() {
+        console.log("error");
+        html = '<p style="color:orange">Error occurred while uploading your file, please try again later.</p>';    
+        $("#notificaton1").html(html);       
+        $("#notificaton1").show();
+      }, 
+      success: function(res) {
+        console.log("Response:"+JSON.stringify(res));
+        if(res.status == 0){
+          html = '<p style="color:red">'+res.message+'</p>';          
+          
+        }else{
+          html = '<p style="color:green">The file has been uploaded successfully.</p>';
+        }
+        $("#notificaton1").html(html);
+        $("#notificaton1").show(); 
+
+      
+      }	        
+    });
+  }));
+});
+
+</script>
 </html>
+
