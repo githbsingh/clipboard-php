@@ -1,39 +1,39 @@
 <?php
 
 // Database configuration
-define('DB_HOST', 'ranchinow.com');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
-define('DB_NAME', 'clipboard');
-define('DB_USER_TBL', 'users');
+define('DB_HOST', $_SERVER['DB_HOST']);
+define('DB_USERNAME', $_SERVER['DB_USERNAME']);
+define('DB_PASSWORD', $_SERVER['DB_PASSWORD']);
+define('DB_NAME', $_SERVER['DB_NAME']);
+define('DB_USER_TBL', $_SERVER['DB_USER_TBL']);
 
 //define('BASE_URL', 'https://frozen-sierra-06530.herokuapp.com/');
-define('BASE_URL', 'https://cloudupp.herokuapp.com/');
+define('BASE_URL', $_SERVER['BASE_URL']);
 // Google API configuration
-define('GOOGLE_CLIENT_ID', '675155176476-0fjf5lrv7eb7vfccdiif8ae5tg8uef26.apps.googleusercontent.com');
-define('GOOGLE_CLIENT_SECRET', '9rosAU-vXt4YsXRokyPR7hAV');
-define('GOOGLE_REDIRECT_URL', BASE_URL.'google-login/');
+define('GOOGLE_CLIENT_ID', $_SERVER['GOOGLE_CLIENT_ID']);
+define('GOOGLE_CLIENT_SECRET', $_SERVER['GOOGLE_CLIENT_SECRET']);
+define('GOOGLE_REDIRECT_URL', $_SERVER['GOOGLE_REDIRECT_URL']);
 
 
 // Facebook API configuration
 
-define('FB_APP_ID', '1884183495069774');
-define('FB_APP_SECRET', 'e16cf3acd3e01e274d860b24dccab8e8');
-define('FB_REDIRECT_URL', BASE_URL.'facebook-login/');
+define('FB_APP_ID', $_SERVER['FB_APP_ID']);
+define('FB_APP_SECRET', $_SERVER['FB_APP_SECRET']);
+define('FB_REDIRECT_URL', $_SERVER['FB_REDIRECT_URL']);
 
 
 // Twitter API configuration 
-define('TW_CONSUMER_KEY', 'qmkVKcZsx64qs2jLocadXa9b4'); 
-define('TW_CONSUMER_SECRET', '3MXlFzsLosOitwUzujupoDyjMEZnRei59n7hJVupqHCB4y6b88'); 
-define('TW_REDIRECT_URL', BASE_URL.'twitter-login/'); 
+define('TW_CONSUMER_KEY', $_SERVER['TW_CONSUMER_KEY']); 
+define('TW_CONSUMER_SECRET', $_SERVER['TW_CONSUMER_SECRET']); 
+define('TW_REDIRECT_URL', $_SERVER['TW_REDIRECT_URL']); 
 
 //Aws S3 configuration 
 
-define('AWS_S3_KEY', 'AKIA6J4E3FLFVHTHAXHT');
-define('AWS_S3_SECRET', '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');
-define('AWS_S3_REGION', 'us-east-1');
-define('AWS_S3_BUCKET', 'bucket');
-define('AWS_S3_URL', 'http://s3.'.AWS_S3_REGION.'.amazonaws.com/'.AWS_S3_BUCKET.'/');
+define('AWS_S3_KEY', $_SERVER['AWS_S3_KEY']);
+define('AWS_S3_SECRET', $_SERVER['AWS_S3_SECRET']);
+define('AWS_S3_REGION', $_SERVER['AWS_S3_REGION']);
+define('AWS_S3_BUCKET', $_SERVER['AWS_S3_BUCKET']);
+define('AWS_S3_URL', $_SERVER['AWS_S3_URL']);
 
 
 
