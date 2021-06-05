@@ -379,7 +379,13 @@ header("location: login");
                 <td><?=$file_name?></td>
                 <td><?=$file_uploaded_on?></td>
                 <td><?=($row[4] == '1'? 'Exist':'Deleted')?></td>
-                <td><a href="<?=$file_url?>" data-toggle="tooltip" title="Download file"><i class="fa fa-download fa-fw"></i></a><a data-toggle="tooltip" title="Delete file" onclick="deleteFile('<?=$id?>','<?=$file_name?>');"><i class="fa fa-trash fa-fw"  style="color:red"></i></a><?php if($file_type=='image'){?><a href="enlarge-image?image=<?=$file_name?>" data-toggle="tooltip" title="View image" target="_blank"><i class="fa fa-search-plus fa-fw"></i></a><?php } ?></td>
+                <td>
+                  <a href="<?=$file_url?>" data-toggle="tooltip" title="Download file"><i class="fa fa-download fa-fw"></i></a>
+                  <!--<a data-toggle="tooltip" title="Delete file" onclick="deleteFile('<?=$id?>','<?=$file_name?>');"><i class="fa fa-trash fa-fw"  style="color:red"></i></a>-->
+                  <?php if($file_type=='image'){?>
+                    <a href="enlarge-image?image=<?=$file_name?>" data-toggle="tooltip" title="View image" target="_blank"><i class="fa fa-search-plus fa-fw"></i></a>
+                  <?php } ?>
+                </td>
               </tr>
             <?php }?>
             </tbody>
