@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Clipboard</title>
+	<title>Cloudupp</title>
     <!-- add icon link -->
     <link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
 	<link rel="stylesheet" href="css/main.css">
@@ -16,6 +16,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style type="text/css">
+      
     footer{
        /* position:absolute;bottom:0px;*/
         margin-left: 38%;
@@ -32,12 +33,12 @@
         <!--<img src="img/clipboard-flat.png" style="margin-left:50px;width:70px"/>
         <h1 style="margin-top:14px;">Clipboard</h1>-->
         <div style="margin:auto;"><img src="img/clipboard-flat.png" style="margin-left:18px;" width="100" height="100" class="d-inline-block align-top" alt=""> 
-        <h2 style="color:white;">Clipboard</h2>
+        <h2 style="color:white;">Cloudupp</h2>
         </div>
         
     </div>
 
-	<form action="enter-email.php" method="post">
+	<form action="enter-email" method="post">
 		<h2 class="form-title">Reset password</h2>
 		<!-- form validation messages
 		<?php include('messages.php'); ?> 
@@ -59,8 +60,8 @@
 			<button type="submit" name="reset-password" class="btn btn-primary">Submit</button>
 		</div>
         
-        <p class="text-center text-muted "><a href="login.php">Back to Login</a></p>
+        <p class="text-center text-muted "><a href="login">Back to Login</a></p>
 	</form>
-    <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+    <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p style="color: white;font-weight: 100;mix-blend-mode: difference;">&copy; Cloudupp <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 </html>

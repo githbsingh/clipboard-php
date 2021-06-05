@@ -3,14 +3,14 @@ require_once "config.php";
 if(!$_SESSION["loggedin"] == true){
 
 // Redirect user to welcome page
-header("location: login.php");
+header("location: login");
 }
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>Clipboard</title>
+<title>Cloudupp</title>
 <!-- add icon link -->
 <link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
 <meta charset="UTF-8">
@@ -203,13 +203,13 @@ footer{
 <div class="container" >
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
   <!-- Brand -->
-  <a class="navbar-brand" href="index.php"><img src="img/clipboard-flat.png" width="30" height="30" class="d-inline-block align-top" alt=""> Clipboard</a>
+  <a class="navbar-brand" href="./"><img src="img/clipboard-flat.png" width="30" height="30" class="d-inline-block align-top" alt=""> Cloudupp</a>
     <ul class="navbar-nav" style="margin-left: auto;">
       <li class="nav-item active">
-        <a class="nav-link" href="index.php" >Tools</a>
+        <a class="nav-link" href="index" >Tools</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="gallery.php">Files</a>
+        <a class="nav-link" href="gallery">Files</a>
       </li>
    
    
@@ -221,8 +221,8 @@ footer{
         <i class="fa fa-user fa-fw"></i>User
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="profile.php">Profile</a>
-          <a class="dropdown-item" href="logout.php">Logout</a>
+          <a class="dropdown-item" href="profile.">Profile</a>
+          <a class="dropdown-item" href="logout">Logout</a>
           
         </div>
       </li>
@@ -310,7 +310,7 @@ footer{
 
       <!--<p><a href="flexgallery.php">Flex Gallery</a></p>-->
   </div><!-- Container End -->
- <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p style="color: white;font-weight: 100;mix-blend-mode: difference;">&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+ <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p style="color: white;font-weight: 100;mix-blend-mode: difference;">&copy; Cloudupp <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>

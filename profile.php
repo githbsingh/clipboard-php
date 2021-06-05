@@ -22,7 +22,7 @@ if($_SESSION['loggedin']){
     
 }else{
 
-    header("Location: ../login.php");
+    header("Location: ../login");
 }
 
 ?>
@@ -30,7 +30,7 @@ if($_SESSION['loggedin']){
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Clipboard</title>
+	<title>Cloudupp</title>
     <!-- add icon link -->
     <link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
 	<link rel="stylesheet" href="css/main.css">
@@ -44,13 +44,15 @@ if($_SESSION['loggedin']){
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <style type="text/css">
       
-      footer{
-        /* position:absolute;bottom:0px;*/
-            margin-left: 38%;
-            margin-right: 38%;
-            margin-top:100px
-            
-        }
+      
+    footer{
+       /* position:absolute;bottom:0px;*/
+        margin-left: 38%;
+        margin-right: 38%;
+        margin-top:100px
+        
+    }
+  
         .form-group {
             margin: 25px 35px !important;
         }
@@ -66,12 +68,12 @@ if($_SESSION['loggedin']){
         <!--<img src="img/clipboard-flat.png" style="margin-left:50px;width:70px"/>
         <h1 style="margin-top:14px;">Clipboard</h1>-->
         <div style="margin:auto;"><img src="img/clipboard-flat.png" style="margin-left:18px;" width="100" height="100" class="d-inline-block align-top" alt=""> 
-        <h2 style="color:white;">Clipboard</h2>
+        <h2 style="color:white;">Cloudupp</h2>
         </div>
         
     </div>
 
-	<form action="enter-email.php" method="post">
+	<form action="enter-email" method="post">
         <div class="row"><img src="<?=$user_image ?>" style="margin:auto;" width="100" height="100" class="d-inline-block align-top" alt=""> </div>
 		<h2 class="form-title"><?=$user_name ?></h2>
 		<!-- form validation messages
@@ -97,9 +99,9 @@ if($_SESSION['loggedin']){
         </div>
        		
         
-        <p class="text-center text-muted "><a href="index.php">Back to Home</a></p>
+        <p class="text-center text-muted "><a href="index">Back to Home</a></p>
 	</form>
-    <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+    <footer class="page-footer font-small" ><div class="footer-copyright text-center"><p style="color: white;font-weight: 100;mix-blend-mode: difference;">&copy; Cloudupp <?= date("Y")?>. All Rights Reserved</p></div></footer>
     
 </body>
 </html>

@@ -84,7 +84,7 @@ if (isset($_POST['new_password'])) {
       $new_pass = md5($new_pass);
       $sql = "UPDATE users SET password='$new_pass' WHERE email='$email'";
       $results = mysqli_query($db, $sql);
-      header('location: index.php');
+      header('location: index');
     }
   }
 }

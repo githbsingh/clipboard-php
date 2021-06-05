@@ -6,7 +6,7 @@ if(!session_id()){
 if(!$_SESSION["loggedin"] == true){
 
     // Redirect user to welcome page
-    header("location: login.php");
+    header("location: login");
 }
 $image_url="https://clipboard-uploads-dev.s3.us-east-1.amazonaws.com/".$_GET['image'];
 

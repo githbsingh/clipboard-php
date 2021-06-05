@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: login.php");
+                header("location: login");
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
             }
@@ -113,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Clipboard</title>
+<title>Cloudupp</title>
 <!-- add icon link -->
 <link rel = "icon" href ="img/clipboard-flat.png"  type = "image/x-icon">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -140,6 +140,7 @@ body {
         margin-top:100px
         
     }
+
 
 
 </style>
@@ -176,12 +177,12 @@ body {
     <!--<img src="img/clipboard-flat.png" style="margin-left:50px;width:70px"/>
     <h1 style="margin-top:14px;">Clipboard</h1>-->
     <div style="margin:auto;"><img src="img/clipboard-flat.png" style="margin-left:18px;" width="100" height="100" class="d-inline-block align-top" alt=""> 
-    <h2 style="color:white;">Clipboard</h2>
+    <h2 style="color:white;">Cloudupp</h2>
     </div>
     
 </div>
 <div class="reg-form">
-    <form action="registration.php" method="post">
+    <form action="registration" method="post">
         <h2 class="text-center">Register</h2>  
         <div class="form-group">
         	<div class="input-group">
@@ -240,11 +241,11 @@ body {
         <div class="form-group">
             <button type="submit" class="btn btn-primary login-btn btn-block">Register Now</button>
         </div>
-        <p class="text-center ">Already have an account? <a href="login.php">Sign in</a></p>
+        <p class="text-center ">Already have an account? <a href="login">Sign in</a></p>
       
     </form>
     
 </div>
-<footer class="page-footer font-small" ><div class="footer-copyright text-center"><p >&copy; Clipbaord <?= date("Y")?>. All Rights Reserved</p></div></footer>
+<footer class="page-footer font-small" ><div class="footer-copyright text-center"><p style="color: white;font-weight: 100;mix-blend-mode: difference;">&copy; Cloudupp <?= date("Y")?>. All Rights Reserved</p></div></footer>
 </body>
 </html>

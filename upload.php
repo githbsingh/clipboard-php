@@ -96,7 +96,7 @@
         }
        // echo "S3::listBuckets(): ".print_r(S3::listBuckets(), 1)."</b>";
          //Aws s3 bucket file upload -End
-         return json_encode($response);
+        // return json_encode($response);
 
     }
 
