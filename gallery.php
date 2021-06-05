@@ -298,7 +298,7 @@ header("location: login");
                 <th width="5%" scope="col">Type</th>
                 <th scope="col">File Name</th>
                 <th scope="col">Uploaded Date</th>
-                <th scope="col">Status</th>
+                <!--<th scope="col">Status</th>-->
                 <th width="8%" scope="col">Action</th>
               </tr>
             </thead>
@@ -378,7 +378,7 @@ header("location: login");
                 <td><?=$file_icon?></td>
                 <td><?=$file_name?></td>
                 <td><?=$file_uploaded_on?></td>
-                <td><?=($row[4] == '1'? 'Exist':'Deleted')?></td>
+                <!--<td><?=($row[4] == '1'? 'Exist':'Deleted')?></td>-->
                 <td>
                   <a href="<?=$file_url?>" data-toggle="tooltip" title="Download file"><i class="fa fa-download fa-fw"></i></a>
                   <!--<a data-toggle="tooltip" title="Delete file" onclick="deleteFile('<?=$id?>','<?=$file_name?>');"><i class="fa fa-trash fa-fw"  style="color:red"></i></a>-->
